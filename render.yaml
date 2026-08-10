@@ -1,0 +1,42 @@
+services:
+  # FastAPI Quantum Backend Service
+  - type: web
+    name: aetherq-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: oregon
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aetherq-postgres
+          property: connectionString
+      - key: CORS_ORIGINS
+        value: "*"
+
+  # React Vite Frontend Static Site
+  - type: web
+    name: aetherq-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: aetherq-backend
+          property: url
+          suffix: /api
+
+databases:
+  # PostgreSQL Database
+  - name: aetherq-postgres
+    databaseName: aetherq_db
+    user: aetherq_user
+    plan: free
