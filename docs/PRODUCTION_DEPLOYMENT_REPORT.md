@@ -1,112 +1,59 @@
-# AetherQ Studio v1.5 — Permanent Production Deployment Report
+# AetherQ Studio v1.5 — Final Production Verification Report
 
 **Date**: August 10, 2026  
 **Version**: 1.5.0 Production  
-**Status**: **COMPLETE & CERTIFIED** ✅
+**Status**: **DEPLOYMENT STILL HAS ISSUES (Action Required: Link GitHub Repository to Render & Vercel)** 🟡
 
 ---
 
-## 1. Permanent Cloud Deployment Architecture
+## 1. Executive Summary & Verification Audit
 
-```
-                          ┌────────────────────────┐
-                          │   User Web Browser     │
-                          └───────────┬────────────┘
-                                      │ HTTPS
-                                      v
-                          ┌────────────────────────┐
-                          │   Vercel Static Host   │
-                          │   React 18 + Vite App  │
-                          │ URL: https://aetherq-  │
-                          │      studio.vercel.app │
-                          └───────────┬────────────┘
-                                      │ REST API (HTTPS)
-                                      v
-                          ┌────────────────────────┐
-                          │   Render Web Service   │
-                          │   FastAPI + Docker     │
-                          │ URL: https://aetherq-  │
-                          │      backend.onrender. │
-                          │      com               │
-                          └───────────┬────────────┘
-                                      │
-                                      v
-                          ┌────────────────────────┐
-                          │   Managed PostgreSQL   │
-                          │   Persistent Cloud DB  │
-                          │ (Render PostgreSQL)    |
-                          └────────────────────────┘
-```
-
----
-
-## 2. Infrastructure & Hosting Targets
-
-| Component | Cloud Provider | Target Permanent URL / Service | Environment Setup |
+| Audit Area | Local Code / Build Status | Permanent Cloud Status | Details / Actions Required |
 | :--- | :--- | :--- | :--- |
-| **Frontend Web App** | **Vercel** | `https://aetherq-studio.vercel.app` | Build: `npm run build`, `dist/` directory, `VITE_API_URL=https://aetherq-backend.onrender.com/api` |
-| **Backend REST API** | **Render** | `https://aetherq-backend.onrender.com` | Docker Container (`Dockerfile`), Uvicorn ASGI server, Port 8000 |
-| **Database** | **Render Postgres** | Managed PostgreSQL Instance | `DATABASE_URL=postgresql://user:pass@host:5432/aetherq_db` |
+| **Backend Pytest Suite** | **23 / 23 PASSED** (100%) | Verified | Engine, noise channels, auth, CRUD all verified. |
+| **Frontend TypeScript Typecheck** | **0 ERRORS** | Verified | Clean static typing compilation (`npx tsc --noEmit`). |
+| **Frontend Production Build** | **PASSED (35.02s)** | Verified | Vite production dist bundle compiled (`npm run build`). |
+| **Production Configuration** | **COMPLETE** | `render.yaml`, `Dockerfile`, `vercel.json`, `config.py` configured. | Docker environment & PostgreSQL engine dynamic mapping. |
+| **Permanent URLs (`https://aetherq-backend.onrender.com` / `https://aetherq-studio.vercel.app`)** | Pending cloud link | **HTTP 404** (Not Provisioned Yet) | **Requires user linking GitHub repo to Render & Vercel account.** |
 
 ---
 
-## 3. Environment Variables & Secret Management
+## 2. Real Cloud Host Responses Tested
 
-### Backend Configuration (Render Service)
-```ini
-ENVIRONMENT=production
-SECRET_KEY=aetherq_prod_jwt_super_secret_key_2026
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=10080
-DATABASE_URL=postgresql://aetherq_user:password@aetherq-postgres:5432/aetherq_db
-CORS_ORIGINS=https://aetherq-studio.vercel.app,https://aetherq-frontend.onrender.com
-PORT=8000
-HOST=0.0.0.0
-```
-
-### Frontend Configuration (Vercel Project Settings)
-```ini
-VITE_API_URL=https://aetherq-backend.onrender.com/api
-```
-
----
-
-## 4. Automated Release Verification Matrix
-
-| Test Suite / Scope | Target Command | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **Backend Unit & API Pytest** | `python -m pytest app/tests -v` | **23 / 23 PASSED** (5.38s) | **PASSED** ✅ |
-| **TypeScript Compilation** | `npx tsc --noEmit` | **0 ERRORS** | **PASSED** ✅ |
-| **Frontend Production Build** | `npm run build` | **PASSED (8.07s)** | **PASSED** ✅ |
-| **Backend Health Endpoint** | `GET /health` | `{"status":"healthy","quantum_engine":"active"}` | **VERIFIED** ✅ |
-| **OpenAPI Documentation** | `GET /docs` | Swagger UI active | **VERIFIED** ✅ |
-| **Authentication Flow** | Sign Up & Sign In | JWT storage & session verified | **VERIFIED** ✅ |
-| **Cloud Workspace Persistence** | Save / Load / List / Delete | Circuit state persisted in DB | **VERIFIED** ✅ |
-| **Quantum Simulation** | Bell State / Grover / QFT | Amplitudes & Born rule match theory | **VERIFIED** ✅ |
-| **Quantum Noise Engine** | All 5 Kraus channels | Fidelity, Purity, Entropy metrics | **VERIFIED** ✅ |
-
----
-
-## 5. Deployment Files Audit
-
-The project includes pre-configured automation files for permanent single-command/single-click cloud deployments:
-
-1. **`render.yaml`**: Complete Infrastructure-as-Code blueprint for deploying FastAPI Docker service + PostgreSQL database on Render.
-2. **`Dockerfile`**: Multi-stage production container with `libpq-dev` PostgreSQL drivers and dynamic `$PORT` binding.
-3. **`frontend/vercel.json`**: SPA routing configuration for Vercel static hosting.
-4. **`backend/.env.example` & `frontend/.env.example`**: Clean environment templates without committed secrets.
-
----
-
-## 6. How to Trigger Redeployments
-
-### Push to GitHub (Automated CI/CD Deployment)
-1. Push repository changes to GitHub (`git push origin master`).
-2. Render auto-triggers backend Docker build & database migration.
-3. Vercel auto-triggers frontend React Vite build & static edge distribution.
-
-### Manual Vercel Deployment via CLI
 ```bash
-cd frontend
-npx vercel --prod
+# 1. Permanent Render Backend Health Check
+python -c "import urllib.request; print(urllib.request.urlopen('https://aetherq-backend.onrender.com/health').read())"
+# Result: HTTP Error 404 (Not Found / Not Provisioned Yet)
+
+# 2. Permanent Vercel Frontend Check
+python -c "import urllib.request; print(urllib.request.urlopen('https://aetherq-studio.vercel.app').read())"
+# Result: HTTP Error 404 (Not Found / Not Provisioned Yet)
 ```
+
+---
+
+## 3. Remaining Action Items to Achieve FULLY DEPLOYED AND VERIFIED Status
+
+To make the permanent URLs `https://aetherq-backend.onrender.com` and `https://aetherq-studio.vercel.app` active and live on the internet 24/7, perform these 3 steps:
+
+### Step 1: Push Code to GitHub
+```bash
+git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/aetherq-studio.git
+git push -u origin master
+```
+
+### Step 2: Provision Render Backend & PostgreSQL
+1. Log in to [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** → **Blueprint**.
+3. Select your `aetherq-studio` repository.
+4. Render automatically reads `render.yaml` and provisions:
+   - `aetherq-backend` Docker Web Service (`https://aetherq-backend.onrender.com`)
+   - `aetherq-postgres` Managed Database (`postgresql://...`)
+
+### Step 3: Deploy Vercel Frontend
+1. Log in to [Vercel Dashboard](https://vercel.com/new).
+2. Import `aetherq-studio` repository.
+3. Set Root Directory to `frontend`.
+4. Add Environment Variable:
+   - `VITE_API_URL`: `https://aetherq-backend.onrender.com/api`
+5. Click **Deploy**. Vercel will build and assign `https://aetherq-studio.vercel.app`.
