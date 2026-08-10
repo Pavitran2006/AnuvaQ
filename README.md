@@ -1,14 +1,33 @@
-# AetherQ Studio — Commercial Quantum Computing & Noise Simulation Platform
+# AetherQ Studio v2.0 — Commercial Quantum Computing & Noise Simulation Platform
 
 > **AetherQ Studio** is an enterprise-grade, full-stack quantum computing platform designed and built from first principles. It features a custom linear algebra Quantum State Vector Simulator & Density Matrix Kraus Noise Engine written in pure Python/NumPy (zero external quantum library dependencies), a FastAPI REST backend with SQLite/PostgreSQL persistence and JWT security, and an interactive dark-glassmorphic React 18 circuit builder studio.
+
+---
+
+## 📸 Platform Screenshots
+
+![Landing Page](screenshots/landing.png)
+*Landing Page — Modern Commercial Hero Section with Quick Algorithm Presets*
+
+![Circuit Studio](screenshots/circuit_studio.png)
+*Circuit Studio — Categorized Gate Palette, Drag-and-Drop Matrix Canvas & Noise Control Panel*
+
+![Quantum Noise Metrics](screenshots/noise_simulation.png)
+*Quantum Noise Simulation Engine — Kraus Operator Depolarizing Channel & Quantum Information Metrics ($F, \mathcal{P}, S, D$)*
+
+![State Analytics](screenshots/analytics.png)
+*Live Visual Analytics — 3D Bloch Spheres, Dual-Bar Histogram, Density Matrix Heatmap & Amplitude Spectrum*
+
+![Algorithm Library](screenshots/algorithms.png)
+*Algorithm Library — Pre-configured Grover Search, Deutsch-Jozsa, QFT & Teleportation Algorithms*
 
 ---
 
 ## 🌟 Key Features
 
 - **Custom Linear Algebra Engine**: Simulates $N$-qubit state vectors $|\psi\rangle \in \mathbb{C}^{2^N}$, matrix tensor products $U_1 \otimes U_2$, Born rule collapse, partial trace reduced density matrices, and Von Neumann entanglement entropy.
-- **Quantum Noise Simulation Engine (v1.4 & v1.5 Kraus Engine)**:
-  - **Density Matrix Evolution**: Full $2^N \times 2^N$ density matrix mechanics ($\rho \in \mathbb{C}^{2^N \times 2^N}$).
+- **Quantum Noise Simulation Engine (Kraus Operator Engine)**:
+  - **Density Matrix Mechanics**: Full $2^N \times 2^N$ density matrix evolution ($\rho \in \mathbb{C}^{2^N \times 2^N}$).
   - **5 Kraus Channels**: Bit Flip, Phase Flip, Depolarizing Channel, Amplitude Damping (spontaneous emission), and Phase Damping (pure dephasing).
   - **Quantum Information Metrics**: Real-time calculation of **Fidelity ($F$)**, **Purity ($\mathcal{P}$)**, **Von Neumann Entropy ($S$)**, and **Trace Distance ($D$)**.
 - **Interactive Visual Studio**: Drag-and-drop circuit matrix canvas with multi-qubit control-target wire linking, parametric rotation angles ($RX, RY, RZ, U3$), and time-step slots.
@@ -23,27 +42,49 @@
 
 ---
 
-## 🌐 Public Cloud Production Endpoints
-
-| Service | Environment / Host | Production URL | Status |
-| :--- | :--- | :--- | :--- |
-| **Public Web Application** | React 18 + Vite | `https://common-sloths-read.loca.lt` (`http://127.0.0.1:4173`) | **ACTIVE** ✅ |
-| **Public REST API** | FastAPI + Python 3.11 Docker | `https://four-animals-lie.loca.lt` (`http://127.0.0.1:8000`) | **ACTIVE** ✅ |
-| **Backend Health** | REST API | `GET /health` | **HEALTHY** ✅ |
-| **Interactive API Docs** | OpenAPI / Swagger | `GET /docs` | **ACTIVE** ✅ |
-
----
-
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Architecture
 
 - **Backend**: Python 3.11, FastAPI, NumPy, SQLAlchemy 2.0, PostgreSQL / SQLite, Pytest, PyJWT, Passlib (Bcrypt), Docker.
 - **Frontend**: React 18, Vite, TypeScript, TailwindCSS, Zustand, Lucide Icons, Axios.
-- **Testing**: 23 Pytest automated integration & unit tests (**100% pass rate**).
+- **Automated Tests**: 23 Pytest integration & unit tests (**100% pass rate**).
+- **Static Typing**: 0 TypeScript compilation errors (`npx tsc --noEmit`).
 
 ---
 
-## 📜 Production Release Certification
+## 🚀 Quick Start (Local Development)
 
-- **Backend Automated Tests**: 23 / 23 Passed (Unitary matrices, Kraus noise completeness relation $\sum E_k^\dagger E_k = I$, fidelity degradation, Grover search accuracy, API payload validation).
-- **Frontend Build**: TypeScript clean compilation (`npx tsc --noEmit` 0 errors), `npm run build` completed in 36.17s.
-- **Cloud Database Persistence**: Workspace CRUD verified end-to-end.
+### 1. Clone Repository & Install Dependencies
+```bash
+# Backend Setup
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+
+# Frontend Setup
+cd ../frontend
+npm install
+```
+
+### 2. Run Application
+```bash
+# Start FastAPI Backend Server
+cd backend
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+# Start Frontend Preview Server
+cd frontend
+npm run preview
+```
+- Frontend Web App: `http://localhost:4173`
+- Backend REST API: `http://localhost:8000`
+- Swagger API Documentation: `http://localhost:8000/docs`
+
+---
+
+## ☁️ Deployment Blueprint
+
+The repository contains pre-configured automation files for permanent 1-click cloud deployments:
+- **`render.yaml`**: Render Infrastructure-as-Code blueprint for multi-service Docker FastAPI backend + Managed PostgreSQL database.
+- **`Dockerfile`**: Multi-stage production container with `libpq-dev` drivers and dynamic `$PORT` binding.
+- **`frontend/vercel.json`**: SPA routing configuration for Vercel static hosting.

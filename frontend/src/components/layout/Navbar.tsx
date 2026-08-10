@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <span className="font-bold text-slate-100 tracking-tight text-base font-mono">Aether<span className="text-quantum-cyan">Q</span></span>
-            <span className="text-[10px] uppercase font-mono text-slate-400 block -mt-1 tracking-widest">Studio v1.2</span>
+            <span className="text-[10px] uppercase font-mono text-slate-400 block -mt-1 tracking-widest">Studio v2.0</span>
           </div>
         </button>
 
