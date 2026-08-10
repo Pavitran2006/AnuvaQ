@@ -1,8 +1,8 @@
 """
-AetherQ OpenQASM 2.0 Exporter
+AnuvaQ OpenQASM 2.0 Exporter
 ============================
 
-Converts internal AetherQ circuit definitions into compliant OpenQASM 2.0 source code.
+Converts internal AnuvaQ circuit definitions into compliant OpenQASM 2.0 source code.
 """
 
 from typing import Dict, Any, List

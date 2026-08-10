@@ -9,7 +9,7 @@ export const DocumentationView: React.FC = () => {
       <div className="glass-panel-glow p-8 rounded-2xl border border-quantum-cyan/30 flex items-center justify-between">
         <div>
           <span className="text-xs font-mono font-bold text-quantum-cyan uppercase tracking-widest">
-            AetherQ Technical Documentation & Handbook
+            AnuvaQ Technical Documentation & Handbook
           </span>
           <h1 className="text-2xl font-bold text-slate-100 mt-1 font-mono">
             Quantum Computing Mathematics Engine Architecture

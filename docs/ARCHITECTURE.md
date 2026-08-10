@@ -1,6 +1,6 @@
-# AetherQ Studio - System Architecture & Design Specification
+# AnuvaQ - System Architecture & Design Specification
 
-AetherQ Studio is an enterprise-grade Quantum Computing Platform engineered from scratch. It features a custom high-performance linear algebra Quantum Simulation Engine in Python & NumPy, a FastAPI backend with JWT security & SQLite state persistence, and a modern React + TypeScript + TailwindCSS visual circuit studio frontend.
+AnuvaQ is an enterprise-grade Quantum Computing Platform engineered from scratch. It features a custom high-performance linear algebra Quantum Simulation Engine in Python & NumPy, a FastAPI backend with JWT security & SQLite state persistence, and a modern React + TypeScript + TailwindCSS visual circuit studio frontend.
 
 ---
 

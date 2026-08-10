@@ -88,7 +88,7 @@ def run_simulation(req: SimulationRequest):
 @router.post("/parse-qasm")
 def parse_qasm(req: QASMRequest):
     """
-    Parses OpenQASM 2.0 source code into AetherQ executable circuit instructions.
+    Parses OpenQASM 2.0 source code into AnuvaQ executable circuit instructions.
     """
     try:
         parsed = QASMParser.parse_qasm(req.qasm_code)
@@ -100,7 +100,7 @@ def parse_qasm(req: QASMRequest):
 @router.post("/export-qasm")
 def export_qasm(req: SimulationRequest):
     """
-    Converts AetherQ circuit definition into standard OpenQASM 2.0.
+    Converts AnuvaQ circuit definition into standard OpenQASM 2.0.
     """
     try:
         gates_list = [g.dict() for g in req.gates]

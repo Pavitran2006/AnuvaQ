@@ -1,5 +1,5 @@
 """
-AetherQ FastAPI Backend Main Application Entrypoint
+AnuvaQ FastAPI Backend Main Application Entrypoint
 """
 
 from fastapi import FastAPI

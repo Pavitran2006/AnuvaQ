@@ -8,8 +8,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///./aetherq.db
-      - SECRET_KEY=aetherq_secret_jwt_key_super_secure_quantum_2026
+      - DATABASE_URL=sqlite:///./anuvaq.db
+      - SECRET_KEY=anuvaq_secret_jwt_key_super_secure_quantum_2026
       - ALGORITHM=HS256
       - ACCESS_TOKEN_EXPIRE_MINUTES=1440
     volumes:

@@ -12,7 +12,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   const { useBackendSimulator, setUseBackendSimulator } = useCircuitStore();
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="AetherQ Platform Settings" maxWidth="md">
+    <Modal isOpen={isOpen} onClose={onClose} title="AnuvaQ Platform Settings" maxWidth="md">
       <div className="flex flex-col gap-5">
         <div className="flex items-center justify-between p-4 rounded-xl glass-panel border border-slate-800">
           <div className="flex items-center gap-3">
@@ -33,7 +33,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         <div className="p-4 rounded-xl glass-panel border border-slate-800 flex flex-col gap-2 font-mono text-xs">
           <div className="flex items-center justify-between text-slate-300">
             <span>Platform Build:</span>
-            <span className="text-quantum-cyan">AetherQ v1.0 Enterprise</span>
+            <span className="text-quantum-cyan">AnuvaQ v2.2 Enterprise</span>
           </div>
           <div className="flex items-center justify-between text-slate-300">
             <span>Matrix Engine Precision:</span>

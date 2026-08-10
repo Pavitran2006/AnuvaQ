@@ -1,7 +1,7 @@
-# AetherQ Studio v2.1 — "Deep Space Scientific Instrument" UI/UX Redesign Report
+# AnuvaQ — "Deep Space Scientific Instrument" UI/UX Redesign Report
 
 ##  Executive Summary
-AetherQ Studio v2.1 completes a comprehensive visual overhaul of the quantum computing simulation platform, transforming it from a generic neon web interface into a **Deep Space Scientific Instrument**. The platform now presents high information density, subtle quantum matrix backgrounds, restrained cyan/blue accent color palettes, and developer-grade dark-themed layout components without altering or breaking any backend quantum logic, Kraus noise engines, authentication system, or cloud database storage APIs.
+AnuvaQ completes a comprehensive visual overhaul of the quantum computing simulation platform, transforming it into a **Deep Space Scientific Instrument**. The platform presents high information density, subtle quantum matrix backgrounds, restrained cyan/blue accent color palettes, and developer-grade dark-themed layout components without altering or breaking any backend quantum logic, Kraus noise engines, authentication system, or cloud database storage APIs.
 
 ---
 

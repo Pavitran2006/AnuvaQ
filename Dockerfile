@@ -1,4 +1,4 @@
-# Production Dockerfile for AetherQ Studio Platform Backend
+# Production Dockerfile for AnuvaQ Platform Backend
 FROM python:3.11-slim as backend
 
 WORKDIR /app

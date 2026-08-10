@@ -1,4 +1,4 @@
-# AetherQ Studio - REST API Specification
+# AnuvaQ - REST API Specification
 
 Base URL: `http://localhost:8000/api`
 
@@ -11,7 +11,7 @@ Creates a new user account and default workspace. Returns JWT access token.
 - **Request Body**:
   ```json
   {
-    "email": "engineer@aetherq.io",
+    "email": "engineer@anuvaq.io",
     "full_name": "Quantum Developer",
     "password": "SecurePassword123!"
   }
@@ -23,7 +23,7 @@ Creates a new user account and default workspace. Returns JWT access token.
     "token_type": "bearer",
     "user": {
       "id": "uuid-v4",
-      "email": "engineer@aetherq.io",
+      "email": "engineer@anuvaq.io",
       "full_name": "Quantum Developer",
       "created_at": "2026-08-06T12:00:00Z"
     }

@@ -1,5 +1,5 @@
 """
-AetherQ REST API Integration Tests
+AnuvaQ REST API Integration Tests
 """
 
 import pytest
@@ -13,7 +13,7 @@ client = TestClient(app)
 def test_root_endpoint():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json()["system"] == "AetherQ Quantum Computing Platform"
+    assert response.json()["system"] == "AnuvaQ Quantum Computing Platform"
 
 
 def test_health_endpoint():
@@ -79,7 +79,7 @@ def test_qasm_parse_and_export():
 
 def test_circuit_crud_and_duplicate():
     # Register & Login test user
-    email = f"crud_user_{uuid.uuid4().hex[:6]}@aetherq.io"
+    email = f"crud_user_{uuid.uuid4().hex[:6]}@anuvaq.io"
     reg_res = client.post("/api/auth/register", json={
         "email": email,
         "password": "Password123!",

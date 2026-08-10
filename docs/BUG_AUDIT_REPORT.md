@@ -1,4 +1,4 @@
-# AetherQ Studio v2.0 — Comprehensive Bug & Error Audit Report
+# AnuvaQ — Comprehensive Bug & Error Audit Report
 
 **Audit Date**: August 10, 2026  
 **Auditor**: Lead Full-Stack & Quantum Software Architect  
@@ -8,15 +8,15 @@
 
 ## 1. Executive Summary
 
-A comprehensive architectural and boundary condition audit was conducted across all core modules of AetherQ Studio v2.0. The audit verified quantum state vector normalization, Kraus operator trace preservation, density matrix positivity, authentication token recovery, and cloud workspace persistence.
+A comprehensive architectural and boundary condition audit was conducted across all core modules of AnuvaQ. The audit verified quantum state vector normalization, Kraus operator trace preservation, density matrix positivity, authentication token recovery, and cloud workspace persistence.
 
 ---
 
 ## 2. Detailed Subsystem Audit & Verification Matrix
 
 ### 2.1 Authentication & Authorization Subsystem
-- **JWT Storage & Expiry**: Tokens are stored securely in `localStorage` under key `aetherq_token`. Expired or invalid tokens trigger automatic cleanup and seamless fallback to Guest Mode via `useAuthStore.checkAuth()`.
-- **Guest Mode Fallback**: Users in Guest Mode can create, simulate, and manipulate circuits seamlessly. Workspace operations fall back cleanly to `localStorage` (`aetherq_local_projects`).
+- **JWT Storage & Expiry**: Tokens are stored securely in `localStorage` under key `anuvaq_token` (with backward-compatible recovery for `aetherq_token`). Expired or invalid tokens trigger automatic cleanup and seamless fallback to Guest Mode via `useAuthStore.checkAuth()`.
+- **Guest Mode Fallback**: Users in Guest Mode can create, simulate, and manipulate circuits seamlessly. Workspace operations fall back cleanly to `localStorage` (`anuvaq_local_projects`).
 - **Protected Routes & Endpoints**: Endpoints `/api/workspaces/*` inspect `Authorization: Bearer <token>` headers. Unauthenticated requests automatically route to Guest Storage.
 
 ### 2.2 Quantum Engine Subsystem (StateVector & Gates)
@@ -34,7 +34,7 @@ A comprehensive architectural and boundary condition audit was conducted across 
   - **Trace Distance**: $D(\rho_{\text{ideal}}, \rho_{\text{noisy}}) = \frac{1}{2} \text{Tr}|\rho_{\text{ideal}} - \rho_{\text{noisy}}| \in [0.0, 1.0]$.
 
 ### 2.4 Cloud Workspace & Project Manager
-- **Database Persistence**: Implements SQLAlchemy ORM models (`CircuitProjectModel`). Seamlessly supports SQLite for local development (`sqlite:///./aetherq.db`) and PostgreSQL for production (`postgresql://...`).
+- **Database Persistence**: Implements SQLAlchemy ORM models (`CircuitProjectModel`). Seamlessly supports SQLite for local development (`sqlite:///./anuvaq.db`) and PostgreSQL for production (`postgresql://...`).
 - **CRUD Validation**:
   - **Save**: Validates non-empty `name` strings and JSON serialized gate definitions.
   - **Load / Rename / Duplicate / Delete**: Inline validation prevents silent failures or unhandled promises.

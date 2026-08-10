@@ -1,6 +1,6 @@
-# AetherQ Studio Platform — Production Cloud Deployment Guide
+# AnuvaQ Platform — Production Cloud Deployment Guide
 
-This document outlines the permanent production cloud deployment setup for the **AetherQ Studio Quantum Computing & Noise Simulation Platform**.
+This document outlines the permanent production cloud deployment setup for **AnuvaQ — Interactive Quantum Computing & Noise Simulation Platform**.
 
 ---
 
@@ -10,7 +10,7 @@ This document outlines the permanent production cloud deployment setup for the *
                     ┌─────────────────────────┐
                     │     Vercel Host         │
                     │   React 18 + Vite       │
-                    │ https://aetherq-studio. │
+                    │ https://anuvaq.         │
                     │ vercel.app              │
                     └────────────┬────────────┘
                                  │ HTTPS / CORS
@@ -18,7 +18,7 @@ This document outlines the permanent production cloud deployment setup for the *
                     ┌─────────────────────────┐
                     │     Render Service      │
                     │   FastAPI + Docker      │
-                    │ https://aetherq-backend.│
+                    │ https://anuvaq-backend. │
                     │ onrender.com            │
                     └────────────┬────────────┘
                                  │
@@ -39,8 +39,8 @@ This document outlines the permanent production cloud deployment setup for the *
 - **Environment Variables**:
   - `ENVIRONMENT`: `production`
   - `SECRET_KEY`: `<secure-jwt-secret>`
-  - `DATABASE_URL`: `postgresql://aetherq_user:password@aetherq-postgres:5432/aetherq_db`
-  - `CORS_ORIGINS`: `https://aetherq-studio.vercel.app`
+  - `DATABASE_URL`: `postgresql://anuvaq_user:password@anuvaq-postgres:5432/anuvaq_db`
+  - `CORS_ORIGINS`: `https://anuvaq.vercel.app`
   - `PORT`: `8000`
 
 ### B. Database (Render PostgreSQL / Supabase / Neon)
@@ -51,7 +51,7 @@ This document outlines the permanent production cloud deployment setup for the *
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
 - **Environment Variables**:
-  - `VITE_API_URL`: `https://aetherq-backend.onrender.com/api`
+  - `VITE_API_URL`: `https://anuvaq-backend.onrender.com/api`
 
 ---
 
@@ -60,7 +60,7 @@ This document outlines the permanent production cloud deployment setup for the *
 ### Method 1: Render Blueprint & Vercel Auto-Deploy (Recommended)
 1. Push codebase to GitHub repository.
 2. In [Render Dashboard](https://dashboard.render.com), click **New** → **Blueprint** and connect your repository. Render will automatically provision the Docker FastAPI Web Service and PostgreSQL database via `render.yaml`.
-3. In [Vercel Dashboard](https://vercel.com), import your repository, set root directory to `frontend/`, and add environment variable `VITE_API_URL=https://aetherq-backend.onrender.com/api`.
+3. In [Vercel Dashboard](https://vercel.com), import your repository, set root directory to `frontend/`, and add environment variable `VITE_API_URL=https://anuvaq-backend.onrender.com/api`.
 
 ### Method 2: Manual CLI Deployment
 ```bash
@@ -69,15 +69,15 @@ cd frontend
 npx vercel --prod
 
 # Deploy Backend Docker Container to Render / Railway / Fly.io
-docker build -t aetherq-backend:latest .
+docker build -t anuvaq-backend:latest .
 ```
 
 ---
 
 ## 4. Verification Checklist
 
-1. **Backend Health**: `GET https://aetherq-backend.onrender.com/health` → `{"status":"healthy","quantum_engine":"active"}`
-2. **Swagger Docs**: `GET https://aetherq-backend.onrender.com/docs`
-3. **Frontend Application**: `https://aetherq-studio.vercel.app`
+1. **Backend Health**: `GET https://anuvaq-backend.onrender.com/health` → `{"status":"healthy","quantum_engine":"active"}`
+2. **Swagger Docs**: `GET https://anuvaq-backend.onrender.com/docs`
+3. **Frontend Application**: `https://anuvaq.vercel.app`
 4. **Authentication & Persistence**: Sign Up / Sign In → Save circuit to PostgreSQL database.
 5. **Quantum Engine**: Run Bell state, Grover, QFT, and test all 5 Kraus noise channels (Bit Flip, Phase Flip, Depolarizing, Amplitude Damping, Phase Damping).

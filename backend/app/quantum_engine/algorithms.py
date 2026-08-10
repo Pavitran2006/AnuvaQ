@@ -1,5 +1,5 @@
 """
-AetherQ Standard Quantum Algorithms Library
+AnuvaQ Standard Quantum Algorithms Library
 ===========================================
 
 MATHEMATICAL FOUNDATIONS (Interview-Worthy Deep Dive):

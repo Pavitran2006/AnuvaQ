@@ -12,7 +12,7 @@ export const api = axios.create({
 // Interceptor to attach Bearer token to requests
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('aetherq_token');
+    const token = localStorage.getItem('anuvaq_token') || localStorage.getItem('aetherq_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

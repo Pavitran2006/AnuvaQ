@@ -1,5 +1,5 @@
 """
-AetherQ Unitary Quantum Gates Library
+AnuvaQ Unitary Quantum Gates Library
 =====================================
 
 MATHEMATICAL FOUNDATIONS (Interview-Worthy Deep Dive):

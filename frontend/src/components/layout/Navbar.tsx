@@ -41,8 +41,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-slate-100 tracking-tight text-sm font-mono">Aether<span className="text-cyan-400">Q</span> Studio</span>
-              <span className="px-1.5 py-0.2 rounded bg-slate-800 border border-slate-700/60 text-[9px] font-mono text-cyan-400 font-medium">v2.1</span>
+              <span className="font-bold text-slate-100 tracking-tight text-sm font-mono">Anuva<span className="text-cyan-400">Q</span></span>
+              <span className="px-1.5 py-0.2 rounded bg-slate-800 border border-slate-700/60 text-[9px] font-mono text-cyan-400 font-medium">v2.2</span>
             </div>
           </div>
         </button>

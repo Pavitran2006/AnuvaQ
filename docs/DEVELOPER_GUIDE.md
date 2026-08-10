@@ -1,4 +1,4 @@
-# AetherQ Studio - Developer & Engineering Guide
+# AnuvaQ — Developer & Engineering Guide
 
 ## 1. Local Development Setup
 

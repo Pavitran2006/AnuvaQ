@@ -1,5 +1,5 @@
 """
-AetherQ Main Quantum Simulator Engine
+AnuvaQ Main Quantum Simulator Engine
 ======================================
 
 MATHEMATICAL FOUNDATIONS (Interview-Worthy Deep Dive):

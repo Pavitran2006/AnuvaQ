@@ -1,5 +1,5 @@
 """
-AetherQ Noisy Quantum Simulator Engine
+AnuvaQ Noisy Quantum Simulator Engine
 ========================================
 
 MATHEMATICAL FOUNDATIONS (Density Matrices & Kraus Operators):

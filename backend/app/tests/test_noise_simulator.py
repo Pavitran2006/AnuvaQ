@@ -1,5 +1,5 @@
 """
-Tests for AetherQ Noisy Quantum Simulator Engine
+Tests for AnuvaQ Noisy Quantum Simulator Engine
 ==================================================
 Verifies Kraus operators, density matrices, trace preservation, purity,
 fidelity, Von Neumann entropy, and REST API integration.

@@ -1,6 +1,6 @@
-# AetherQ - Quantum Computing Mathematics Guide (Interview Preparation)
+# AnuvaQ — Quantum Computing Mathematics Guide (Interview Preparation)
 
-This guide provides deep mathematical explanations for every linear algebra concept implemented in the AetherQ simulation engine.
+This guide provides deep mathematical explanations for every linear algebra concept implemented in the AnuvaQ simulation engine.
 
 ---
 

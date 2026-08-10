@@ -57,9 +57,9 @@ export const SignInView: React.FC<SignInViewProps> = ({
             <Atom className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl font-bold font-mono text-slate-100">AetherQ Studio</h2>
+            <h2 className="text-xl font-bold font-mono text-slate-100">AnuvaQ</h2>
             <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-              Enterprise quantum computing simulation platform & cloud workspace.
+              Interactive quantum computing & noise simulation platform.
             </p>
           </div>
         </div>
@@ -80,7 +80,7 @@ export const SignInView: React.FC<SignInViewProps> = ({
         </div>
 
         <div className="text-[10px] font-mono text-slate-500">
-          © 2026 AetherQ Studio v2.1
+          © 2026 AnuvaQ v2.2
         </div>
       </div>
 
@@ -108,7 +108,7 @@ export const SignInView: React.FC<SignInViewProps> = ({
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="engineer@aetherq.io"
+                placeholder="engineer@anuvaq.io"
                 className="w-full pl-9 pr-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500/50 font-mono placeholder-slate-600"
               />
             </div>

@@ -1,5 +1,5 @@
 """
-AetherQ Matrix & Linear Algebra Operations
+AnuvaQ Matrix & Linear Algebra Operations
 ==========================================
 
 MATHEMATICAL FOUNDATIONS (Interview-Worthy Deep Dive):

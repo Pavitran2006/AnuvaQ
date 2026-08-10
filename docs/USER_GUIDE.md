@@ -1,6 +1,6 @@
-# AetherQ Studio - End User Guide
+# AnuvaQ — End User Guide
 
-Welcome to **AetherQ Studio**, an advanced Quantum Computing & Circuit Simulation Platform.
+Welcome to **AnuvaQ**, an interactive Quantum Computing & Noise Simulation Platform.
 
 ---
 

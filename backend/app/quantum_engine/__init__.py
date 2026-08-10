@@ -1,5 +1,5 @@
 """
-AetherQ Quantum Mechanics & Matrix Simulation Engine.
+AnuvaQ Quantum Mechanics & Matrix Simulation Engine.
 Provides complex linear algebra state evolution, unitary gate matrices, Born rule measurement collapse,
 partial trace density matrices, and OpenQASM interoperability.
 """

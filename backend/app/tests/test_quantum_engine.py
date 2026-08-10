@@ -1,5 +1,5 @@
 """
-AetherQ Quantum Engine Unit Tests
+AnuvaQ Quantum Engine Unit Tests
 =================================
 
 Tests linear algebra matrix unitaries, state vector evolution, Born probability calculations,

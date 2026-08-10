@@ -19,7 +19,7 @@ interface WorkspaceState {
 }
 
 // Local storage key for Guest Mode fallback
-const LOCAL_PROJECTS_KEY = 'aetherq_local_projects';
+const LOCAL_PROJECTS_KEY = 'anuvaq_local_projects';
 
 const getLocalProjects = (): CircuitProject[] => {
   try {
@@ -50,7 +50,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
 
   fetchProjects: async () => {
     set({ isLoading: true, errorMessage: null });
-    const token = localStorage.getItem('aetherq_token');
+    const token = localStorage.getItem('anuvaq_token') || localStorage.getItem('aetherq_token');
     
     if (token) {
       try {
@@ -69,7 +69,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
 
   saveProject: async (name, description = '', numQubits = 2, gatesJson = '[]') => {
     set({ isSaving: true, errorMessage: null, successMessage: null });
-    const token = localStorage.getItem('aetherq_token');
+    const token = localStorage.getItem('anuvaq_token') || localStorage.getItem('aetherq_token');
 
     if (token) {
       try {
@@ -117,7 +117,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   },
 
   renameProject: async (id, newName) => {
-    const token = localStorage.getItem('aetherq_token');
+    const token = localStorage.getItem('anuvaq_token') || localStorage.getItem('aetherq_token');
     if (token && !id.startsWith('local_')) {
       try {
         await api.put(`/circuits/${id}`, { name: newName });
@@ -138,7 +138,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   },
 
   duplicateProject: async (id) => {
-    const token = localStorage.getItem('aetherq_token');
+    const token = localStorage.getItem('anuvaq_token') || localStorage.getItem('aetherq_token');
     if (token && !id.startsWith('local_')) {
       try {
         await api.post(`/circuits/${id}/duplicate`);
@@ -171,7 +171,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   },
 
   deleteProject: async (id) => {
-    const token = localStorage.getItem('aetherq_token');
+    const token = localStorage.getItem('anuvaq_token') || localStorage.getItem('aetherq_token');
     if (token && !id.startsWith('local_')) {
       try {
         await api.delete(`/circuits/${id}`);

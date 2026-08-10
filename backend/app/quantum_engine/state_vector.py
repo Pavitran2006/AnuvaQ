@@ -1,5 +1,5 @@
 """
-AetherQ State Vector Engine
+AnuvaQ State Vector Engine
 ===========================
 
 MATHEMATICAL FOUNDATIONS (Interview-Worthy Deep Dive):

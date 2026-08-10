@@ -1,6 +1,6 @@
-# AetherQ Studio v2.0 — Commercial Quantum Computing & Noise Simulation Platform
+# AnuvaQ — Interactive Quantum Computing & Noise Simulation Platform
 
-> **AetherQ Studio** is an enterprise-grade, full-stack quantum computing platform designed and built from first principles. It features a custom linear algebra Quantum State Vector Simulator & Density Matrix Kraus Noise Engine written in pure Python/NumPy (zero external quantum library dependencies), a FastAPI REST backend with SQLite/PostgreSQL persistence and JWT security, and an interactive dark-glassmorphic React 18 circuit builder studio.
+> **AnuvaQ** is an enterprise-grade, full-stack quantum computing platform designed and built from first principles. It features a custom linear algebra Quantum State Vector Simulator & Density Matrix Kraus Noise Engine written in pure Python/NumPy (zero external quantum library dependencies), a FastAPI REST backend with SQLite/PostgreSQL persistence and JWT security, and an interactive Deep Space Scientific React 18 circuit builder studio.
 
 ---
 

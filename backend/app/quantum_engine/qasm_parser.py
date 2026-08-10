@@ -1,8 +1,8 @@
 """
-AetherQ OpenQASM 2.0 Parser
+AnuvaQ OpenQASM 2.0 Parser
 ============================
 
-Parses OpenQASM 2.0 text into AetherQ internal gate instructions.
+Parses OpenQASM 2.0 text into AnuvaQ internal gate instructions.
 Supports Qreg declarations, single qubit gates (h, x, y, z, s, sdg, t, tdg, rx, ry, rz, u1, u2, u3),
 2-qubit controlled gates (cx, cz, swap), and measurement statements.
 """

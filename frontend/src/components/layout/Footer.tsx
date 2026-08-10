@@ -13,10 +13,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab }) => {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-slate-100 font-bold text-sm">
             <Atom className="w-4 h-4 text-cyan-400" />
-            <span>AetherQ Studio v2.1</span>
+            <span>AnuvaQ</span>
           </div>
           <p className="text-slate-500 text-[11px] leading-relaxed">
-            Quantum Computing Simulation Platform built from first principles with pure linear algebra.
+            Interactive Quantum Computing & Noise Simulation Platform built from first principles with pure linear algebra.
           </p>
         </div>
 

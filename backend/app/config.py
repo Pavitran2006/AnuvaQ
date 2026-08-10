@@ -1,5 +1,5 @@
 """
-AetherQ System Configuration
+AnuvaQ System Configuration
 """
 
 import os
@@ -10,16 +10,16 @@ from typing import List
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "AetherQ Quantum Computing Platform"
-    VERSION: str = "1.5.0"
+    PROJECT_NAME: str = "AnuvaQ Quantum Computing Platform"
+    VERSION: str = "2.2.0"
     API_V1_STR: str = "/api"
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
     
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "aetherq_secret_jwt_key_super_secure_quantum_2026")
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "anuvaq_secret_jwt_key_super_secure_quantum_2026")
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 Days
 
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./aetherq.db")
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./anuvaq.db")
     CORS_ORIGINS: str = os.getenv(
         "CORS_ORIGINS", 
         "http://localhost:3000,http://localhost:5173,http://127.0.0.1:5173,http://127.0.0.1:3000,*"
