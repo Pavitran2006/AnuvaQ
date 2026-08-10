@@ -21,7 +21,7 @@ import { ExportImportModal } from './components/workspace/ExportImportModal';
 import { SettingsModal } from './components/workspace/SettingsModal';
 import { useCircuitStore } from './store/useCircuitStore';
 import { useAuthStore } from './store/useAuthStore';
-import { GateType, GateStep } from './types/quantum';
+import { GateType } from './types/quantum';
 
 export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('landing');
@@ -101,7 +101,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#090d16] text-slate-100 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#070a12] quantum-grid-bg text-slate-100 font-sans">
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -184,7 +184,7 @@ export const App: React.FC = () => {
                 </div>
 
                 {/* Bloch Spheres Grid */}
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {simulationResult.final_bloch_spheres.map((bloch, idx) => (
                     <BlochSphere
                       key={bloch.qubit}
@@ -195,7 +195,7 @@ export const App: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <StateHistogram
                     amplitudes={simulationResult.final_amplitudes}
                     shotsSummary={simulationResult.shots_summary}
@@ -225,7 +225,7 @@ export const App: React.FC = () => {
                 noiseProbability={simulationResult.noise_probability}
               />
             )}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {simulationResult.final_bloch_spheres.map((bloch, idx) => (
                 <BlochSphere
                   key={bloch.qubit}
@@ -235,7 +235,7 @@ export const App: React.FC = () => {
                 />
               ))}
             </div>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <StateHistogram
                 amplitudes={simulationResult.final_amplitudes}
                 shotsSummary={simulationResult.shots_summary}

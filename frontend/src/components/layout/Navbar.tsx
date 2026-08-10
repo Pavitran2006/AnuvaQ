@@ -1,5 +1,5 @@
 import React from 'react';
-import { Atom, Cpu, Zap, Folder, BookOpen, Layers, Settings, User as UserIcon, Home, Play, LayoutDashboard, LogOut, LogIn, UserPlus } from 'lucide-react';
+import { Atom, Cpu, Zap, Folder, BookOpen, Layers, Settings, Home, Play, LayoutDashboard, LogOut, LogIn, UserPlus } from 'lucide-react';
 import { useCircuitStore } from '../../store/useCircuitStore';
 import { useAuthStore } from '../../store/useAuthStore';
 
@@ -20,43 +20,45 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { user, isAuthenticated, logout } = useAuthStore();
 
   const navItems = [
-    { id: 'landing', label: 'Home', icon: <Home className="w-4 h-4" /> },
-    ...(isAuthenticated ? [{ id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> }] : []),
-    { id: 'builder', label: 'Circuit Studio', icon: <Atom className="w-4 h-4" /> },
-    { id: 'visualizer', label: 'State Analytics', icon: <Layers className="w-4 h-4" /> },
-    { id: 'algorithms', label: 'Algorithm Library', icon: <Zap className="w-4 h-4" /> },
-    { id: 'docs', label: 'Quantum Math', icon: <BookOpen className="w-4 h-4" /> },
+    { id: 'landing', label: 'Home', icon: <Home className="w-3.5 h-3.5" /> },
+    ...(isAuthenticated ? [{ id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-3.5 h-3.5" /> }] : []),
+    { id: 'builder', label: 'Studio', icon: <Atom className="w-3.5 h-3.5" /> },
+    { id: 'visualizer', label: 'Analytics', icon: <Layers className="w-3.5 h-3.5" /> },
+    { id: 'algorithms', label: 'Algorithms', icon: <Zap className="w-3.5 h-3.5" /> },
+    { id: 'docs', label: 'Quantum Math', icon: <BookOpen className="w-3.5 h-3.5" /> },
   ];
 
   return (
-    <header className="h-14 bg-surface-50/90 backdrop-blur-md border-b border-slate-800/80 px-4 flex items-center justify-between z-30 sticky top-0">
+    <header className="h-13 bg-[#0b0f19]/95 backdrop-blur-md border-b border-slate-800/60 px-4 flex items-center justify-between z-30 sticky top-0">
       {/* Brand Identity */}
       <div className="flex items-center gap-6">
         <button
           onClick={() => setActiveTab('landing')}
           className="flex items-center gap-2.5 hover:opacity-90 transition-opacity text-left cursor-pointer"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-quantum-cyan to-quantum-violet flex items-center justify-center shadow-lg shadow-quantum-cyan/20">
-            <Atom className="w-5 h-5 text-slate-950 animate-spin-slow" />
+          <div className="w-7 h-7 rounded-md bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+            <Atom className="w-4 h-4" />
           </div>
           <div>
-            <span className="font-bold text-slate-100 tracking-tight text-base font-mono">Aether<span className="text-quantum-cyan">Q</span></span>
-            <span className="text-[10px] uppercase font-mono text-slate-400 block -mt-1 tracking-widest">Studio v2.0</span>
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold text-slate-100 tracking-tight text-sm font-mono">Aether<span className="text-cyan-400">Q</span> Studio</span>
+              <span className="px-1.5 py-0.2 rounded bg-slate-800 border border-slate-700/60 text-[9px] font-mono text-cyan-400 font-medium">v2.1</span>
+            </div>
           </div>
         </button>
 
         {/* Navigation Tabs */}
-        <nav className="flex items-center space-x-1 ml-4">
+        <nav className="hidden md:flex items-center space-x-1 ml-2">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-scientific ${
                   isActive
-                    ? 'bg-slate-800 text-quantum-cyan border border-quantum-cyan/30 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                    ? 'bg-slate-800/80 text-cyan-400 border border-cyan-500/30'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
                 }`}
               >
                 {item.icon}
@@ -68,12 +70,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Control Actions & Engine Status */}
-      <div className="flex items-center gap-3">
-        {/* Launch Studio CTA button when on Landing or Docs */}
+      <div className="flex items-center gap-2.5">
+        {/* Launch Studio CTA */}
         {(activeTab === 'landing' || activeTab === 'docs') && (
           <button
             onClick={() => setActiveTab('builder')}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-bold transition-all shadow-md shadow-cyan-500/20"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-semibold transition-scientific shadow-sm"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
             <span>Launch Studio</span>
@@ -83,10 +85,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Engine Toggle */}
         <button
           onClick={() => setUseBackendSimulator(!useBackendSimulator)}
-          className={`flex items-center gap-2 px-2.5 py-1 rounded-md text-xs font-mono border transition-all ${
+          className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono border transition-scientific ${
             useBackendSimulator
-              ? 'bg-quantum-violet/20 border-quantum-violet/50 text-quantum-violet'
-              : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+              ? 'bg-blue-950/40 border-blue-500/40 text-blue-400'
+              : 'bg-slate-900 border-slate-800 text-emerald-400'
           }`}
           title="Toggle between FastAPI NumPy Engine and Local Client JS Engine"
         >
@@ -97,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Workspace Projects Modal */}
         <button
           onClick={onOpenProjects}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-700/50 transition-colors"
+          className="p-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-slate-800 transition-colors"
           title="Projects & Workspaces"
         >
           <Folder className="w-4 h-4" />
@@ -106,21 +108,21 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Settings Button */}
         <button
           onClick={onOpenSettings}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-700/50 transition-colors"
+          className="p-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-slate-800 transition-colors"
           title="Platform Settings"
         >
           <Settings className="w-4 h-4" />
         </button>
 
         {/* Auth State & Buttons */}
-        <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
+        <div className="flex items-center gap-2 pl-2 border-l border-slate-800/80">
           {isAuthenticated && user ? (
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setActiveTab('dashboard')}
-                className="flex items-center gap-2 px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-xs font-mono text-cyan-300"
+                className="flex items-center gap-2 px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-mono text-cyan-400"
               >
-                <div className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-[10px]">
+                <div className="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-[9px]">
                   {user.full_name.charAt(0).toUpperCase()}
                 </div>
                 <span className="hidden sm:inline max-w-[100px] truncate">{user.full_name}</span>
@@ -130,20 +132,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                   logout();
                   setActiveTab('landing');
                 }}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-950/40 border border-slate-700/50 transition-colors"
+                className="p-1.5 rounded-md text-slate-400 hover:text-rose-400 hover:bg-slate-800 border border-slate-800 transition-colors"
                 title="Sign Out"
               >
-                <LogOut className="w-4 h-4" />
+                <LogOut className="w-3.5 h-3.5" />
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => setActiveTab('signin')}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors ${
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
                   activeTab === 'signin'
                     ? 'bg-slate-800 text-cyan-400 border border-cyan-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
                 <LogIn className="w-3.5 h-3.5" />
@@ -151,10 +153,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
               <button
                 onClick={() => setActiveTab('signup')}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition-scientific ${
                   activeTab === 'signup'
-                    ? 'bg-cyan-400 text-slate-950'
-                    : 'bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40'
+                    ? 'bg-cyan-500 text-slate-950'
+                    : 'bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30'
                 }`}
               >
                 <UserPlus className="w-3.5 h-3.5" />

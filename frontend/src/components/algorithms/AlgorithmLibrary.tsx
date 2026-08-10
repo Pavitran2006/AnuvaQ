@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Zap, Play, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Zap, Play, CheckCircle2, Atom, Code2, BookOpen } from 'lucide-react';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
@@ -15,6 +15,7 @@ interface AlgorithmDef {
   qubits: number;
   description: string;
   complexity: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   paramOptions?: { label: string; value: string }[];
 }
 
@@ -24,6 +25,7 @@ const ALGORITHMS: AlgorithmDef[] = [
     name: 'Bell State Generator',
     category: 'Entanglement',
     qubits: 2,
+    difficulty: 'Beginner',
     description: 'Generates 1 of 4 maximally entangled 2-qubit Bell states: |Φ+⟩, |Φ-⟩, |Ψ+⟩, |Ψ-⟩.',
     complexity: 'O(1)',
     paramOptions: [
@@ -38,7 +40,8 @@ const ALGORITHMS: AlgorithmDef[] = [
     name: 'Deutsch-Jozsa Algorithm',
     category: 'Quantum Speedup',
     qubits: 2,
-    description: 'Determines whether a hidden black-box oracle function is Constant or Balanced in a single quantum query.',
+    difficulty: 'Intermediate',
+    description: 'Determines whether a hidden oracle function is Constant or Balanced in a single quantum query.',
     complexity: 'O(1) vs O(2^(N-1))',
     paramOptions: [
       { label: 'Constant Oracle f(x) = 0', value: 'constant' },
@@ -50,6 +53,7 @@ const ALGORITHMS: AlgorithmDef[] = [
     name: "Grover's Search Algorithm",
     category: 'Quantum Search',
     qubits: 2,
+    difficulty: 'Intermediate',
     description: 'Provides quadratic speedup for searching an unsorted 2-qubit computational state space.',
     complexity: 'O(√N)',
     paramOptions: [
@@ -64,7 +68,8 @@ const ALGORITHMS: AlgorithmDef[] = [
     name: 'Quantum Fourier Transform (QFT)',
     category: 'Transforms',
     qubits: 3,
-    description: 'Quantum version of Discrete Fourier Transform operating on complex state vector amplitudes.',
+    difficulty: 'Advanced',
+    description: 'Quantum counterpart of the Discrete Fourier Transform operating on state vector amplitudes.',
     complexity: 'O(N^2)',
   },
   {
@@ -72,7 +77,8 @@ const ALGORITHMS: AlgorithmDef[] = [
     name: 'Quantum Teleportation Protocol',
     category: 'Communication',
     qubits: 3,
-    description: 'Transfers an unknown single-qubit quantum state from Alice to Bob using an EPR Bell pair and 2 classical bits.',
+    difficulty: 'Advanced',
+    description: 'Transfers an unknown single-qubit quantum state using an EPR Bell pair and 2 classical channel bits.',
     complexity: 'O(1)',
   },
 ];
@@ -98,9 +104,9 @@ export const AlgorithmLibrary: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-6 min-h-[calc(100vh-140px)]">
+    <div className="flex flex-col md:flex-row gap-6 py-4">
       {/* Algorithm Selection Sidebar */}
-      <div className="w-80 flex flex-col gap-3">
+      <div className="w-full md:w-80 flex flex-col gap-3 shrink-0">
         <h2 className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-400">
           Standard Quantum Algorithms
         </h2>
@@ -114,20 +120,20 @@ export const AlgorithmLibrary: React.FC = () => {
                 setSelectedParam(algo.paramOptions ? algo.paramOptions[0].value : '');
                 setResult(null);
               }}
-              className={`p-4 rounded-xl border cursor-pointer transition-all ${
+              className={`p-3.5 rounded-xl border cursor-pointer transition-scientific ${
                 isSelected
-                  ? 'glass-panel-glow border-quantum-cyan/50 ring-1 ring-quantum-cyan'
-                  : 'glass-panel hover:bg-slate-800/40'
+                  ? 'bg-slate-900 border-cyan-500/50 shadow-sm'
+                  : 'bg-slate-900/40 border-slate-800 hover:bg-slate-800/40'
               }`}
             >
-              <div className="flex items-center justify-between mb-1.5">
-                <h3 className="font-bold text-sm text-slate-100">{algo.name}</h3>
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="font-bold text-xs text-slate-100 font-mono">{algo.name}</h3>
                 <Badge variant={isSelected ? 'cyan' : 'slate'}>{algo.qubits} Qubits</Badge>
               </div>
-              <p className="text-xs text-slate-400 line-clamp-2">{algo.description}</p>
-              <div className="flex items-center justify-between mt-3 text-[10px] font-mono text-slate-500">
-                <span>{algo.category}</span>
-                <span className="text-quantum-violet font-semibold">Speedup: {algo.complexity}</span>
+              <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">{algo.description}</p>
+              <div className="flex items-center justify-between mt-2.5 text-[10px] font-mono text-slate-500">
+                <span className="text-cyan-400">{algo.difficulty}</span>
+                <span>Speedup: {algo.complexity}</span>
               </div>
             </div>
           );
@@ -135,16 +141,24 @@ export const AlgorithmLibrary: React.FC = () => {
       </div>
 
       {/* Main Algorithm Execution Stage */}
-      <div className="flex-1 flex flex-col gap-6">
-        <Card title={selectedAlgo.name} subtitle={selectedAlgo.description} glow>
-          <div className="flex items-center justify-between py-2 border-b border-slate-800 mb-4">
+      <div className="flex-1 flex flex-col gap-5">
+        <div className="bg-[#0f172a]/80 border border-slate-800/80 rounded-xl p-5 backdrop-blur-md flex flex-col gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="text-lg font-bold text-slate-100 font-mono">{selectedAlgo.name}</h3>
+              <Badge variant="cyan">{selectedAlgo.category}</Badge>
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed">{selectedAlgo.description}</p>
+          </div>
+
+          <div className="flex items-center justify-between py-3 border-t border-slate-800">
             {selectedAlgo.paramOptions ? (
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono text-slate-300">Parameter Configuration:</span>
+                <span className="text-xs font-mono text-slate-300">Target State / Oracle:</span>
                 <select
                   value={selectedParam}
                   onChange={(e) => setSelectedParam(e.target.value)}
-                  className="bg-slate-900 border border-slate-800 text-xs font-mono text-quantum-cyan rounded-lg px-3 py-1.5 focus:outline-none focus:border-quantum-cyan"
+                  className="bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-400 rounded-lg px-3 py-1.5 focus:outline-none focus:border-cyan-500/50"
                 >
                   {selectedAlgo.paramOptions.map((opt) => (
                     <option key={opt.value} value={opt.value}>
@@ -154,23 +168,23 @@ export const AlgorithmLibrary: React.FC = () => {
                 </select>
               </div>
             ) : (
-              <span className="text-xs font-mono text-slate-400">Default settings active</span>
+              <span className="text-xs font-mono text-slate-500">Default settings active</span>
             )}
 
             <Button
               variant="quantum"
               onClick={handleRun}
               isLoading={isLoading}
-              leftIcon={<Play className="w-4 h-4 fill-current" />}
+              leftIcon={<Play className="w-3.5 h-3.5 fill-current" />}
             >
-              Execute Algorithm
+              Run Algorithm
             </Button>
           </div>
 
           {result && (
-            <div className="flex flex-col gap-6 animate-fadeIn">
+            <div className="flex flex-col gap-5 pt-2 border-t border-slate-800 animate-fadeIn">
               {result.description && (
-                <div className="p-3 rounded-lg bg-quantum-cyan/10 border border-quantum-cyan/30 text-quantum-cyan font-mono text-xs flex items-center gap-2">
+                <div className="p-3 rounded-lg bg-cyan-950/40 border border-cyan-500/30 text-cyan-400 font-mono text-xs flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>{result.description}</span>
                 </div>
@@ -180,7 +194,7 @@ export const AlgorithmLibrary: React.FC = () => {
               <StateVectorTable amplitudes={result.final_amplitudes} />
             </div>
           )}
-        </Card>
+        </div>
       </div>
     </div>
   );

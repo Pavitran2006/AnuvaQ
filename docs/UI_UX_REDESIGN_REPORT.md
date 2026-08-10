@@ -1,63 +1,73 @@
-# AetherQ Studio v2.0 — Commercial UI/UX Redesign Report
+# AetherQ Studio v2.1 — "Deep Space Scientific Instrument" UI/UX Redesign Report
 
-**Redesign Date**: August 10, 2026  
-**Target Design Standard**: Modern Developer SaaS & Commercial Quantum Computing Platform  
-**Aesthetic Language**: Dark Scientific Glassmorphism, Precision Grid Layouts, Restrained Micro-animations  
-
----
-
-## 1. Information Architecture & Navigation
-
-AetherQ Studio v2.0 introduces a clean, logical 8-section information hierarchy designed for intuitive navigation by recruiters, software engineers, and quantum researchers:
-
-```
-Landing Page
-   ├── Hero (Headline, Subtitle, CTAs, Preset Pills)
-   ├── Technical Features Grid (NumPy Engine, Dual-Mode, 3D Analytics, OpenQASM 2.0)
-   └── Enterprise Standard Banner
-Navbar (Studio v2.0 Branding)
-   ├── Route Tabs: Home, Dashboard, Circuit Studio, State Analytics, Algorithm Library, Quantum Math
-   └── Actions: Engine Toggle (PyNumPy vs. Local), Workspace Projects Modal, Settings Modal, Auth Badges
-Dashboard View
-   ├── Developer Welcome Header & Quick Launchers
-   ├── System Telemetry Status (Engine, API, Database, Qubit Limits)
-   └── Recent Quantum Circuits Table
-Circuit Studio (Core Product)
-   ├── Left: Categorized & Searchable Gate Palette (1-Qubit, Pauli, Phase, Rotations, Multi-Control, SWAP)
-   ├── Center: Interactive Matrix Canvas with drag-and-drop & wire linking
-   └── Right: Quantum Noise Control Panel (OFF/ON, 5 Kraus models, slider, metric tooltips)
-Analytics Page
-   ├── Probability Distribution & Shots Summary
-   ├── Dual-bar Ideal (Cyan) vs. Noisy (Rose) State Histogram
-   ├── 4x4 / 8x8 Density Matrix Heatmaps
-   ├── 3D SVG Bloch Spheres Grid
-   ├── Quantum Metrics Card (Fidelity, Purity, Entropy, Trace Distance)
-   └── Complex Amplitude Spectrum Table
-Algorithm Library
-   ├── Pre-configured Algorithm Cards (Bell State, Grover Search, Deutsch-Jozsa, QFT, Teleportation)
-   └── 1-Click "Load Circuit & Execute" Action
-Cloud Workspace / Project Manager
-   ├── Save active circuit with metadata
-   └── Searchable list with inline Rename, Duplicate, Delete confirmation, and Load actions
-Authentication Views
-   ├── SaaS Sign In & Sign Up forms with password visibility toggles and Guest Mode shortcut
-```
+##  Executive Summary
+AetherQ Studio v2.1 completes a comprehensive visual overhaul of the quantum computing simulation platform, transforming it from a generic neon web interface into a **Deep Space Scientific Instrument**. The platform now presents high information density, subtle quantum matrix backgrounds, restrained cyan/blue accent color palettes, and developer-grade dark-themed layout components without altering or breaking any backend quantum logic, Kraus noise engines, authentication system, or cloud database storage APIs.
 
 ---
 
-## 2. Design System Tokens & Aesthetics
+## 1. Design Direction & Palette Specification
 
-- **Color Palette**:
-  - Background: Deep Void Blue (`#090d16`)
-  - Glass Panels: Translucent Slate (`#0f172a / 40%`) with Subtle Borders (`border-slate-800/80`)
-  - Quantum Accents: Cyan (`#06b6d4`), Violet (`#8b5cf6`), Teal (`#14b8a6`), Emerald (`#10b981`), Rose (`#f43f5e`)
-- **Typography**: Clean monospaced accents (`font-mono`) paired with modern sans-serif headings (`Inter / Outfit`).
-- **Responsive Layout**: Validated across breakpoint thresholds from 320px mobile up to 1440px desktop displays.
+### Color Tokens
+- **Primary Background**: `#070a12` (Deep Navy / Charcoal)
+- **Secondary Background**: `#0b0f19` (Dark Instrument Surface)
+- **Panel / Card Background**: `#0f172a / 80%` (Subtle Glass Surface)
+- **Primary Accent**: `#06b6d4` (Cyan-500 — Ideal Quantum States & Primary CTAs)
+- **Secondary Accent**: `#3b82f6` (Blue-500 — System Telemetry & Secondary Actions)
+- **Noise / Mixed Accent**: `#8b5cf6` (Violet-500 — Quantum Entropy & Mixed States)
+- **Warning / Trace Accent**: `#f59e0b` (Amber-500 — Trace Distance)
+- **Success Accent**: `#10b981` (Emerald-500 — Quantum Fidelity)
+
+### Typography & Spacing
+- **Font Stack**: System UI Sans (`Inter`, `system-ui`) for UI controls; Monospace (`Fira Code`, `JetBrains Mono`) for math formulas, gate matrices, status telemetry, and QASM.
+- **Card Padding**: Reduced from `p-8` to `p-5` for higher information density.
+- **Visual Effects**: Replaced heavy drop shadows and glowing neon borders with subtle `border-slate-800/80` borders and 3% opacity quantum grid background pattern.
 
 ---
 
-## 3. UI/UX Quality Summary
+## 2. Key Component Overhauls
 
-- **Native Dialog Elimination**: Native browser `alert()` calls replaced with non-blocking feedback banners.
-- **Empty & Loading States**: Clear loading spinners (`isSimulating`, `isSaving`) and empty list placeholders.
-- **Student & Recruiter Tooltips**: Clear mathematical descriptions for Fidelity ($F$), Purity ($\mathcal{P}$), Entropy ($S$), and Trace Distance ($D$).
+### A. Compact Developer Navbar (`Navbar.tsx`)
+- Standardized height (`h-14`), added branding version badge (`v2.1`), compact tab pills with clean hover states, system engine status badge (`Local Engine`), quick modals trigger (Projects, Settings), and auth buttons.
+
+### B. Scientific Landing Hero (`LandingPage.tsx`)
+- Scientific value proposition: *"Design quantum circuits, simulate quantum states, model realistic noise, and analyze quantum information through an interactive scientific workspace."*
+- Quick algorithm launch pills (`Bell State`, `Grover Search`, `QFT`).
+- Clean 4-column Core Capabilities grid with monochrome scientific iconography.
+
+### C. Developer Dashboard & Telemetry (`DashboardView.tsx`)
+- Interactive System Health Telemetry bar displaying PyNumPy Engine status, DB persistence mode, Active Qubits, and Kraus Channels.
+- Quick-Start Algorithm Cards and Recent Cloud Projects table.
+
+### D. Circuit Studio & Searchable Gate Palette (`GatePalette.tsx`, `CircuitCanvas.tsx`)
+- Compact gate palette with instant search filter.
+- Qubit register canvas featuring subtle dark grid tiles and clean cyan/violet gate highlight styles.
+
+### E. Scientific Noise Control Panel (`NoiseSettingsPanel.tsx`)
+- Direct toggle for `IDEAL` vs `NOISY` mode.
+- Noise channel dropdown (Bit Flip, Phase Flip, Depolarizing, Amplitude Damping, Phase Damping) and smooth 0-100% probability slider.
+
+### F. Quantum Information Metrics Card (`QuantumMetricsCard.tsx`)
+- Scientific metric breakdown with formulas and progress bars:
+  - **Fidelity ($F$)**: $\text{Tr}(\rho_{\text{ideal}} \cdot \rho_{\text{noisy}})$
+  - **Purity ($\mathcal{P}$)**: $\text{Tr}(\rho^2)$
+  - **von Neumann Entropy ($S$)**: $-\text{Tr}(\rho \log_2 \rho)$
+  - **Trace Distance ($D$)**: $\frac{1}{2}\text{Tr}|\rho_1 - \rho_2|$
+
+---
+
+## 3. Verification & Evidence
+
+### Test Suite Execution
+- **Backend Pytest**: `23/23 PASSED` (`python -m pytest app/tests -v`)
+- **TypeScript Type Check**: `0 ERRORS` (`npx tsc --noEmit`)
+- **Vite Production Build**: `PASSED` in `7.86s` (`npm run build`)
+
+### Captured UI Artifacts
+1. `screenshots/v21_landing.png` — Deep Space Landing Page
+2. `screenshots/v21_signin.png` — Scientific Authentication Modal
+3. `screenshots/v21_dashboard.png` — System Telemetry Dashboard
+4. `screenshots/v21_circuit_studio.png` — Circuit Register Canvas & Gate Palette
+5. `screenshots/v21_noise.png` — Kraus Noise Control Panel & Information Metrics
+6. `screenshots/v21_analytics.png` — 3D Bloch Spheres & Density Matrix Heatmaps
+7. `screenshots/v21_algorithms.png` — Standard Algorithm Library Stage
+8. `screenshots/v21_projects.png` — Cloud Workspaces & Project Manager

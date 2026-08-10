@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Github, BookOpen, Layers, ShieldCheck, Heart } from 'lucide-react';
+import { Atom } from 'lucide-react';
 
 interface FooterProps {
   onNavigateTab: (tab: string) => void;
@@ -7,67 +7,48 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigateTab }) => {
   return (
-    <footer className="border-t border-slate-800/80 bg-slate-950/80 backdrop-blur-xl mt-auto py-8 px-6 text-slate-400">
-      <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Brand Info */}
-        <div className="flex flex-col gap-1.5 text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2 text-white font-bold text-base font-mono">
-            <Cpu className="w-5 h-5 text-cyan-400" />
-            <span>AetherQ Studio <span className="text-xs font-normal text-cyan-400">v1.1</span></span>
+    <footer className="border-t border-slate-800/80 bg-[#070a12] py-8 px-6 text-slate-400 mt-auto">
+      <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-xs font-mono">
+        {/* Column 1: Brand */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2 text-slate-100 font-bold text-sm">
+            <Atom className="w-4 h-4 text-cyan-400" />
+            <span>AetherQ Studio v2.1</span>
           </div>
-          <p className="text-xs text-slate-500 max-w-sm">
-            Commercial-grade Quantum Computing Platform built from first principles with pure linear algebra.
+          <p className="text-slate-500 text-[11px] leading-relaxed">
+            Quantum Computing Simulation Platform built from first principles with pure linear algebra.
           </p>
         </div>
 
-        {/* Quick Nav Links */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-medium">
-          <button
-            onClick={() => onNavigateTab('landing')}
-            className="hover:text-cyan-400 transition-colors"
-          >
-            Home
-          </button>
-          <button
-            onClick={() => onNavigateTab('builder')}
-            className="hover:text-cyan-400 transition-colors"
-          >
-            Circuit Studio
-          </button>
-          <button
-            onClick={() => onNavigateTab('visualizer')}
-            className="hover:text-cyan-400 transition-colors"
-          >
-            State Analytics
-          </button>
-          <button
-            onClick={() => onNavigateTab('algorithms')}
-            className="hover:text-cyan-400 transition-colors"
-          >
-            Algorithm Library
-          </button>
-          <button
-            onClick={() => onNavigateTab('docs')}
-            className="hover:text-cyan-400 transition-colors"
-          >
-            Quantum Math Handbook
-          </button>
+        {/* Column 2: Product Links */}
+        <div className="flex flex-col gap-2">
+          <span className="text-slate-300 font-semibold uppercase text-[10px] tracking-wider">Product</span>
+          <button onClick={() => onNavigateTab('builder')} className="text-left hover:text-cyan-400 text-slate-400">Circuit Studio</button>
+          <button onClick={() => onNavigateTab('visualizer')} className="text-left hover:text-cyan-400 text-slate-400">State Analytics</button>
+          <button onClick={() => onNavigateTab('algorithms')} className="text-left hover:text-cyan-400 text-slate-400">Algorithm Library</button>
+          <button onClick={() => onNavigateTab('dashboard')} className="text-left hover:text-cyan-400 text-slate-400">Developer Dashboard</button>
         </div>
 
-        {/* Tech Stack & Copyright */}
-        <div className="flex flex-col items-center md:items-end gap-2 text-xs">
-          <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-500">
-            <span>Built with</span>
-            <span className="text-slate-300 font-semibold">Python</span>
-            <span>•</span>
-            <span className="text-slate-300 font-semibold">FastAPI</span>
-            <span>•</span>
-            <span className="text-slate-300 font-semibold">NumPy</span>
-            <span>•</span>
-            <span className="text-slate-300 font-semibold">React</span>
+        {/* Column 3: Resources */}
+        <div className="flex flex-col gap-2">
+          <span className="text-slate-300 font-semibold uppercase text-[10px] tracking-wider">Resources</span>
+          <button onClick={() => onNavigateTab('docs')} className="text-left hover:text-cyan-400 text-slate-400">Quantum Math Handbook</button>
+          <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-cyan-400 text-slate-400">GitHub Repository</a>
+          <span className="text-slate-500 text-[11px]">OpenQASM 2.0 Specs</span>
+        </div>
+
+        {/* Column 4: Technology & Copyright */}
+        <div className="flex flex-col gap-2">
+          <span className="text-slate-300 font-semibold uppercase text-[10px] tracking-wider">Technology</span>
+          <div className="text-slate-400 text-[11px] flex flex-wrap gap-1">
+            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Python</span>
+            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">NumPy</span>
+            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">FastAPI</span>
+            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">React 18</span>
+            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">TypeScript</span>
           </div>
-          <div className="text-slate-500 text-[11px]">
-            © 2026 <span className="text-slate-300 font-medium">Pavitran</span>. All rights reserved.
+          <div className="text-slate-500 text-[10px] mt-2">
+            © 2026 Pavitran. All rights reserved.
           </div>
         </div>
       </div>
