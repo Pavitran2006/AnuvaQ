@@ -22,14 +22,19 @@ class Settings(BaseSettings):
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./anuvaq.db")
     CORS_ORIGINS: str = os.getenv(
         "CORS_ORIGINS", 
-        "http://localhost:3000,http://localhost:5173,http://127.0.0.1:5173,http://127.0.0.1:3000,*"
+        "https://anuvaq.vercel.app,https://anuvaq-frontend.vercel.app,http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173"
     )
 
     @property
     def cors_origins_list(self) -> List[str]:
-        if not self.CORS_ORIGINS or self.CORS_ORIGINS.strip() == "*":
-            return ["*"]
-        return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
+        if not self.CORS_ORIGINS:
+            return ["https://anuvaq.vercel.app", "http://localhost:5173", "http://localhost:3000"]
+        origins = [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip() and origin.strip() != "*"]
+        defaults = ["https://anuvaq.vercel.app", "https://anuvaq-frontend.vercel.app", "http://localhost:5173", "http://localhost:3000"]
+        for d in defaults:
+            if d not in origins:
+                origins.append(d)
+        return origins
 
     @property
     def normalized_database_url(self) -> str:

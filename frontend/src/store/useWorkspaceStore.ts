@@ -83,7 +83,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
         set({
           activeProject: res.data,
           isSaving: false,
-          successMessage: '✓ Project saved to SQLite Cloud Database!',
+          successMessage: '✓ Project saved to Production Cloud Database!',
         });
         await get().fetchProjects();
         return true;
