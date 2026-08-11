@@ -33,12 +33,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab }) => {
         <div className="flex flex-col gap-2">
           <span className="text-slate-300 font-semibold uppercase text-[10px] tracking-wider">Resources</span>
           <button onClick={() => onNavigateTab('docs')} className="text-left hover:text-cyan-400 text-slate-400">Quantum Math Handbook</button>
-          <span 
-            title="GitHub repository link will be connected after repository creation"
-            className="text-slate-500 cursor-not-allowed text-[11px] inline-flex items-center gap-1 opacity-70"
+          <a 
+            href="https://github.com/Pavitran2006/AnuvaQ" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-cyan-400 text-slate-400 flex items-center gap-1 transition-colors"
           >
-            GitHub Repository <span className="text-[9px] px-1 py-0.2 rounded bg-slate-900 border border-slate-800 text-slate-400">Pending Push</span>
-          </span>
+            GitHub Repository
+          </a>
           <span className="text-slate-500 text-[11px]">OpenQASM 2.0 Specs</span>
         </div>
 
