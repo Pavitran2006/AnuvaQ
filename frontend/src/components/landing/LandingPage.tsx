@@ -1,6 +1,8 @@
 import React from 'react';
 import { Cpu, Layers, Code2, ArrowRight, Play, BookOpen, ShieldCheck, Activity, Zap, Server, Atom } from 'lucide-react';
 
+import { AnuvaQLogo } from '../ui/AnuvaQLogo';
+
 interface LandingPageProps {
   onLaunchStudio: () => void;
   onExploreDocs: () => void;
@@ -17,6 +19,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-[#0b0f19]/90 p-8 md:p-12 backdrop-blur-md">
         <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto gap-5">
+          <div className="mb-2">
+            <AnuvaQLogo size="hero" showBadge={true} />
+          </div>
+
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-mono font-medium tracking-wide">
             <Atom className="w-3.5 h-3.5" />
             <span>SCIENTIFIC QUANTUM COMPUTING PLATFORM</span>

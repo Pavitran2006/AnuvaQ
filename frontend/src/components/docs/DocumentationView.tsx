@@ -1,5 +1,5 @@
 import React from 'react';
-import { Atom } from 'lucide-react';
+import { AnuvaQLogoMark } from '../ui/AnuvaQLogo';
 import { Card } from '../ui/Card';
 
 export const DocumentationView: React.FC = () => {
@@ -19,7 +19,7 @@ export const DocumentationView: React.FC = () => {
           </p>
         </div>
         <div className="w-16 h-16 rounded-2xl bg-quantum-cyan/10 border border-quantum-cyan/40 flex items-center justify-center text-quantum-cyan">
-          <Atom className="w-10 h-10 animate-pulse" />
+          <AnuvaQLogoMark sizePx={44} />
         </div>
       </div>
 

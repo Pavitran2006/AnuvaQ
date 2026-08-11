@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Atom, Eye, EyeOff, Lock, Mail, ArrowRight, AlertCircle, Loader2, Sparkles, ShieldCheck } from 'lucide-react';
 import { api } from '../../services/api';
 import { useAuthStore } from '../../store/useAuthStore';
+import { AnuvaQLogo } from '../ui/AnuvaQLogo';
 
 interface SignInViewProps {
   onSuccess: () => void;
@@ -53,15 +54,10 @@ export const SignInView: React.FC<SignInViewProps> = ({
       {/* Left Branding Side */}
       <div className="p-8 bg-slate-950/60 border-b md:border-b-0 md:border-r border-slate-800 flex flex-col justify-between gap-6">
         <div className="flex flex-col gap-4">
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-            <Atom className="w-6 h-6" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold font-mono text-slate-100">AnuvaQ</h2>
-            <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-              Interactive quantum computing & noise simulation platform.
-            </p>
-          </div>
+          <AnuvaQLogo size="lg" showBadge={true} />
+          <p className="text-xs text-slate-400 leading-relaxed">
+            Interactive quantum computing & noise simulation platform.
+          </p>
         </div>
 
         <div className="space-y-3 font-mono text-[11px] text-slate-400">
