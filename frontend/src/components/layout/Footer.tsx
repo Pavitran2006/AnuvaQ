@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnuvaQLogo } from '../ui/AnuvaQLogo';
+import { Atom } from 'lucide-react';
 
 interface FooterProps {
   onNavigateTab: (tab: string) => void;
@@ -11,7 +11,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab }) => {
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-xs font-mono">
         {/* Column 1: Brand */}
         <div className="flex flex-col gap-2">
-          <AnuvaQLogo size="sm" showBadge={false} />
+          <div className="flex items-center gap-2 text-slate-100 font-bold text-sm">
+            <Atom className="w-4 h-4 text-cyan-400" />
+            <span>AnuvaQ</span>
+          </div>
           <p className="text-slate-500 text-[11px] leading-relaxed">
             Interactive Quantum Computing & Noise Simulation Platform built from first principles with pure linear algebra.
           </p>

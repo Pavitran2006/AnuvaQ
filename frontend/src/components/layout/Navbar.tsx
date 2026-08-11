@@ -3,8 +3,6 @@ import { Atom, Cpu, Zap, Folder, BookOpen, Layers, Settings, Home, Play, LayoutD
 import { useCircuitStore } from '../../store/useCircuitStore';
 import { useAuthStore } from '../../store/useAuthStore';
 
-import { AnuvaQLogo } from '../ui/AnuvaQLogo';
-
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
@@ -38,7 +36,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setActiveTab('landing')}
           className="flex items-center gap-2.5 hover:opacity-90 transition-opacity text-left cursor-pointer"
         >
-          <AnuvaQLogo size="sm" showBadge={true} />
+          <div className="w-7 h-7 rounded-md bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+            <Atom className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold text-slate-100 tracking-tight text-sm font-mono">Anuva<span className="text-cyan-400">Q</span></span>
+              <span className="px-1.5 py-0.2 rounded bg-slate-800 border border-slate-700/60 text-[9px] font-mono text-cyan-400 font-medium">v2.2</span>
+            </div>
+          </div>
         </button>
 
         {/* Navigation Tabs */}
