@@ -20,22 +20,8 @@ services:
       - key: CORS_ORIGINS
         value: "*"
 
-  # React Vite Frontend Static Site
-  - type: web
-    name: anuvaq-frontend
-    runtime: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/dist
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: anuvaq-backend
-          property: url
-          suffix: /api
-
 databases:
-  # PostgreSQL Database
+  # Managed PostgreSQL Database
   - name: anuvaq-postgres
     databaseName: anuvaq_db
     user: anuvaq_user
