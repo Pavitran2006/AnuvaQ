@@ -33,7 +33,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab }) => {
         <div className="flex flex-col gap-2">
           <span className="text-slate-300 font-semibold uppercase text-[10px] tracking-wider">Resources</span>
           <button onClick={() => onNavigateTab('docs')} className="text-left hover:text-cyan-400 text-slate-400">Quantum Math Handbook</button>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-cyan-400 text-slate-400">GitHub Repository</a>
+          <span 
+            title="GitHub repository link will be connected after repository creation"
+            className="text-slate-500 cursor-not-allowed text-[11px] inline-flex items-center gap-1 opacity-70"
+          >
+            GitHub Repository <span className="text-[9px] px-1 py-0.2 rounded bg-slate-900 border border-slate-800 text-slate-400">Pending Push</span>
+          </span>
           <span className="text-slate-500 text-[11px]">OpenQASM 2.0 Specs</span>
         </div>
 
@@ -41,14 +46,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab }) => {
         <div className="flex flex-col gap-2">
           <span className="text-slate-300 font-semibold uppercase text-[10px] tracking-wider">Technology</span>
           <div className="text-slate-400 text-[11px] flex flex-wrap gap-1">
-            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Python</span>
+            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Python 3.11</span>
             <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">NumPy</span>
             <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">FastAPI</span>
             <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">React 18</span>
             <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">TypeScript</span>
           </div>
           <div className="text-slate-500 text-[10px] mt-2">
-            © 2026 Pavitran. All rights reserved.
+            © 2026 AnuvaQ. All rights reserved.
           </div>
         </div>
       </div>

@@ -137,9 +137,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
       {/* Supported Algorithms Section */}
       <section className="flex flex-col gap-4">
-        <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400">
-          Supported Algorithms
-        </h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400">
+            Supported Algorithms
+          </h2>
+          <span className="text-[10px] font-mono text-slate-500">Interactive Presets</span>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 font-mono text-xs">
           {[
             { name: 'Bell State', tag: 'Superposition & EPR', preset: 'bell' },
@@ -154,22 +157,25 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 onRunPreset(algo.preset);
                 onLaunchStudio();
               }}
-              className="p-3.5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800/60 hover:border-cyan-500/40 text-left transition-scientific flex flex-col justify-between gap-2"
+              className="p-3.5 rounded-xl border border-slate-800/80 bg-[#0f172a]/60 hover:bg-[#0f172a] hover:border-cyan-500/40 text-left transition-all duration-200 group flex flex-col justify-between gap-2.5 shadow-sm"
             >
-              <div className="font-bold text-slate-200">{algo.name}</div>
-              <div className="text-[10px] text-slate-400">{algo.tag}</div>
+              <div className="flex items-center justify-between w-full">
+                <span className="font-bold text-slate-200 group-hover:text-cyan-400 transition-colors">{algo.name}</span>
+                <ArrowRight className="w-3 h-3 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
+              </div>
+              <div className="text-[10px] text-slate-400 font-sans leading-tight">{algo.tag}</div>
             </button>
           ))}
         </div>
       </section>
 
       {/* Architecture & Tech Stack */}
-      <section className="p-6 rounded-xl border border-slate-800 bg-slate-900/40 flex flex-col md:flex-row items-center justify-between gap-4">
+      <section className="p-6 rounded-xl border border-slate-800/80 bg-[#0f172a]/50 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <ShieldCheck className="w-5 h-5 text-cyan-400" />
+          <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
           <div>
             <h4 className="text-slate-200 font-semibold text-xs">Pure Linear Algebra Engine</h4>
-            <p className="text-slate-400 text-[11px]">Zero black-box quantum library dependencies. 100% Pytest verified.</p>
+            <p className="text-slate-400 text-[11px]">Built from first-principles linear algebra · 24/24 automated tests passing</p>
           </div>
         </div>
 
@@ -177,7 +183,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           {['Python 3.11', 'FastAPI', 'NumPy', 'React 18', 'TypeScript', 'Tailwind CSS'].map((tech) => (
             <span
               key={tech}
-              className="px-2.5 py-0.5 rounded border border-slate-800 bg-slate-900 text-slate-300 font-mono text-[10px]"
+              className="px-2.5 py-0.5 rounded border border-slate-800 bg-[#070a12] text-slate-300 font-mono text-[10px]"
             >
               {tech}
             </span>
