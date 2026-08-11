@@ -45,7 +45,7 @@ export const useCircuitStore = create<CircuitState>((set, get) => ({
   selectedStepId: null,
   simulationResult: null,
   activeHistoryStep: -1,
-  useBackendSimulator: false,
+  useBackendSimulator: true,
   isSimulating: false,
   historyStack: [
     [

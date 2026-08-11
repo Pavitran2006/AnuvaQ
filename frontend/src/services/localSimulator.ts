@@ -64,7 +64,10 @@ export class LocalQuantumSimulator {
         u = [{ r: invSqrt2, i: 0 }, { r: invSqrt2, i: 0 }, { r: invSqrt2, i: 0 }, { r: -invSqrt2, i: 0 }];
         break;
       }
-      case 'X': {
+      case 'X':
+      case 'CX':
+      case 'CNOT':
+      case 'CCX': {
         u = [{ r: 0, i: 0 }, { r: 1, i: 0 }, { r: 1, i: 0 }, { r: 0, i: 0 }];
         break;
       }
