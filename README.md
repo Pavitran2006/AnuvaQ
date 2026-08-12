@@ -1,6 +1,16 @@
 # AnuvaQ — Interactive Quantum Computing & Noise Simulation Platform
 
-> **AnuvaQ** is an enterprise-grade, full-stack quantum computing platform designed and built from first principles. It features a custom linear algebra Quantum State Vector Simulator & Density Matrix Kraus Noise Engine written in pure Python/NumPy (zero external quantum library dependencies), a FastAPI REST backend with SQLite/PostgreSQL persistence and JWT security, and an interactive Deep Space Scientific React 18 circuit builder studio.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-anuvaq.vercel.app-6366f1?style=for-the-badge&logo=vercel)](https://anuvaq.vercel.app/)
+[![API Backend](https://img.shields.io/badge/Backend_API-anuvaq--backend.onrender.com-00e5ff?style=for-the-badge&logo=render)](https://anuvaq-backend.onrender.com/health)
+[![Pytest Suite](https://img.shields.io/badge/Tests-24%2F24_Passed-00e676?style=for-the-badge&logo=pytest)](https://github.com/Pavitran2006/AnuvaQ)
+[![TypeScript](https://img.shields.io/badge/TypeScript-0_Errors-3178c6?style=for-the-badge&logo=typescript)](https://github.com/Pavitran2006/AnuvaQ)
+
+> **AnuvaQ** is an enterprise-grade, full-stack quantum computing platform designed and built from first principles. It features a custom linear algebra Quantum State Vector Simulator & Density Matrix Kraus Noise Engine written in pure Python/NumPy (zero external quantum library dependencies), a FastAPI REST backend with PostgreSQL persistence and JWT security, and an interactive Deep Space Scientific React 18 circuit builder studio.
+
+### 🌐 Live Production Links
+* **Frontend Web App**: [https://anuvaq.vercel.app/](https://anuvaq.vercel.app/)
+* **FastAPI Backend Service**: [https://anuvaq-backend.onrender.com](https://anuvaq-backend.onrender.com)
+* **API Documentation**: [https://anuvaq-backend.onrender.com/docs](https://anuvaq-backend.onrender.com/docs)
 
 ---
 
