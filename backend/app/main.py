@@ -3,12 +3,14 @@ AnuvaQ FastAPI Backend Main Application Entrypoint
 """
 
 import time
+import asyncio
 import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import engine, Base
+import app.models  # Ensures User, Circuit, Workspace models are registered in Base.metadata
 from app.api import api_router
 
 logging.basicConfig(level=logging.INFO)
@@ -30,7 +32,7 @@ async def lifespan(app: FastAPI):
             if attempt == max_retries:
                 logger.error("Could not connect to database after max retries. Proceeding startup...")
             else:
-                time.sleep(2)
+                await asyncio.sleep(2)
     yield
 
 
