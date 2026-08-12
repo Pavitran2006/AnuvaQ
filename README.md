@@ -5,19 +5,22 @@
 [![Pytest Suite](https://img.shields.io/badge/Tests-24%2F24_Passed-00e676?style=for-the-badge&logo=pytest)](https://github.com/Pavitran2006/AnuvaQ)
 [![TypeScript](https://img.shields.io/badge/TypeScript-0_Errors-3178c6?style=for-the-badge&logo=typescript)](https://github.com/Pavitran2006/AnuvaQ)
 
-> **AnuvaQ** is an enterprise-grade, full-stack quantum computing platform designed and built from first principles. It features a custom linear algebra Quantum State Vector Simulator & Density Matrix Kraus Noise Engine written in pure Python/NumPy (zero external quantum library dependencies), a FastAPI REST backend with PostgreSQL persistence and JWT security, and an interactive Deep Space Scientific React 18 circuit builder studio.
+> **AnuvaQ** is a full-stack interactive quantum computing and noise simulation platform built from first principles. It features a custom linear algebra Quantum State Vector Simulator & Density Matrix Kraus Noise Engine written in pure Python/NumPy (zero external quantum framework dependencies), a FastAPI REST backend with PostgreSQL persistence and JWT security, and a scientific React 18 circuit studio.
+
+---
 
 ### 🌐 Live Production Links
 * **Frontend Web App**: [https://anuvaq.vercel.app/](https://anuvaq.vercel.app/)
 * **FastAPI Backend Service**: [https://anuvaq-backend.onrender.com](https://anuvaq-backend.onrender.com)
 * **API Documentation**: [https://anuvaq-backend.onrender.com/docs](https://anuvaq-backend.onrender.com/docs)
+* **GitHub Repository**: [https://github.com/Pavitran2006/AnuvaQ](https://github.com/Pavitran2006/AnuvaQ)
 
 ---
 
 ## 📸 Platform Screenshots
 
 ![Landing Page](screenshots/landing.png)
-*Landing Page — Modern Commercial Hero Section with Quick Algorithm Presets*
+*Landing Page — Modern Scientific Hero Section with Quick Algorithm Presets*
 
 ![Circuit Studio](screenshots/circuit_studio.png)
 *Circuit Studio — Categorized Gate Palette, Drag-and-Drop Matrix Canvas & Noise Control Panel*
@@ -33,68 +36,96 @@
 
 ---
 
-## 🌟 Key Features
+## 🏗️ System Architecture
 
-- **Custom Linear Algebra Engine**: Simulates $N$-qubit state vectors $|\psi\rangle \in \mathbb{C}^{2^N}$, matrix tensor products $U_1 \otimes U_2$, Born rule collapse, partial trace reduced density matrices, and Von Neumann entanglement entropy.
-- **Quantum Noise Simulation Engine (Kraus Operator Engine)**:
-  - **Density Matrix Mechanics**: Full $2^N \times 2^N$ density matrix evolution ($\rho \in \mathbb{C}^{2^N \times 2^N}$).
-  - **5 Kraus Channels**: Bit Flip, Phase Flip, Depolarizing Channel, Amplitude Damping (spontaneous emission), and Phase Damping (pure dephasing).
-  - **Quantum Information Metrics**: Real-time calculation of **Fidelity ($F$)**, **Purity ($\mathcal{P}$)**, **Von Neumann Entropy ($S$)**, and **Trace Distance ($D$)**.
-- **Interactive Visual Studio**: Drag-and-drop circuit matrix canvas with multi-qubit control-target wire linking, parametric rotation angles ($RX, RY, RZ, U3$), and time-step slots.
-- **Dual-Mode Hybrid Execution**: Instant client-side TypeScript simulator for zero-latency UI previews, paired with backend NumPy engine for high-precision computation.
-- **Real-Time Analytics Suite**:
-  - **3D SVG Bloch Spheres**: Dual ideal vs. shrunken mixed-state Bloch vector overlays.
-  - **Side-by-Side Dual Histogram**: Ideal (cyan) vs. Noisy (rose) Born rule outcome comparison.
-  - **Density Matrix Heatmap**: Tabbed view between Ideal Pure $|\psi\rangle\langle\psi|$ and Noisy Mixed $\rho_{\text{noisy}}$ states.
-  - **Complex Amplitude Spectrum Table**: Real, imaginary, magnitude, and phase angles $(\theta_\text{deg})$.
-- **Cloud Workspace Persistence**: Real authentication (Sign Up / Sign In / JWT), circuit save/load/rename/duplicate to persistent cloud database.
-- **OpenQASM 2.0 Interoperability**: Full bidirectional OpenQASM code parsing and export.
-
----
-
-## 🛠️ Tech Stack & Architecture
-
-- **Backend**: Python 3.11, FastAPI, NumPy, SQLAlchemy 2.0, PostgreSQL / SQLite, Pytest, PyJWT, Passlib (Bcrypt), Docker.
-- **Frontend**: React 18, Vite, TypeScript, TailwindCSS, Zustand, Lucide Icons, Axios.
-- **Automated Tests**: 23 Pytest integration & unit tests (**100% pass rate**).
-- **Static Typing**: 0 TypeScript compilation errors (`npx tsc --noEmit`).
+```text
+               +----------------------------------+
+               |        React 18 + Vite           |
+               |      (Vercel SPA Hosting)        |
+               +----------------------------------+
+                                |
+                   HTTPS / JWT Authorization
+                                |
+                                v
+               +----------------------------------+
+               |         FastAPI Backend          |
+               |      (Render Docker Service)     |
+               +----------------------------------+
+                      /                    \
+                     v                      v
+      +-------------------------+  +-------------------------+
+      |  NumPy Quantum Engine   |  |   PostgreSQL Database   |
+      | (State Vectors & Noise) |  |   (Cloud User Circuits) |
+      +-------------------------+  +-------------------------+
+```
 
 ---
 
-## 🚀 Quick Start (Local Development)
+## 🌟 Key Capabilities
 
-### 1. Clone Repository & Install Dependencies
+### ⚛️ Pure NumPy Quantum Simulator
+- **State Vector Mechanics**: Simulates $N$-qubit state vectors $|\psi\rangle \in \mathbb{C}^{2^N}$, matrix tensor products $U_1 \otimes U_2$, Born rule collapse, partial trace reduced density matrices, and Von Neumann entanglement entropy.
+- **Supported Quantum Gates**: $H, X, Y, Z, S, T, RX, RY, RZ, U3, CX (CNOT), CZ, SWAP, CCX (Toffoli)$.
+- **Pre-configured Algorithms**: Bell State Generator, Deutsch-Jozsa, Grover's Search Algorithm, Quantum Fourier Transform (QFT), and Quantum Teleportation Protocol.
+
+### 🧪 Density Matrix Kraus Noise Engine
+- **Density Matrix Evolution**: Full $2^N \times 2^N$ density matrix dynamics ($\rho \in \mathbb{C}^{2^N \times 2^N}$).
+- **Kraus Noise Channels**: Bit Flip, Phase Flip, Depolarizing Channel, Amplitude Damping (spontaneous emission), and Phase Damping (pure dephasing).
+- **Quantum Information Metrics**:
+  - **Fidelity ($F$)**: State overlap between ideal pure state $|\psi\rangle$ and noisy mixed state $\rho_{\text{noisy}}$.
+  - **Purity ($\mathcal{P}$)**: $\text{Tr}(\rho^2)$ metric indicating decoherence.
+  - **Von Neumann Entropy ($S$)**: $S(\rho) = -\text{Tr}(\rho \log_2 \rho)$.
+  - **Trace Distance ($D$)**: Distinguishability measure between states.
+
+### 🔐 Authentication & Cloud Workspace
+- **JWT Security**: Secure password hashing with Bcrypt and signed JSON Web Tokens.
+- **PostgreSQL Persistence**: User workspace creation, circuit saving, retrieving, duplicating, and deleting.
+- **OpenQASM 2.0 Interoperability**: Bidirectional OpenQASM code parsing and code export.
+
+---
+
+## 🧪 Verification & Testing
+
+- **Backend Unit & E2E Test Suite**: 24 / 24 PASSED (`python -m pytest app/tests -v` in 2.38s).
+- **Frontend Static Compilation**: 0 ERRORS (`npx tsc --noEmit`).
+- **Production Build**: Clean bundle compilation (`npm run build` in 6.14s).
+
+---
+
+## ☁️ Production Deployment Architecture
+
+* **Frontend**: Hosted on **Vercel** (`Root Directory: frontend`, Framework: `Vite`).
+* **Backend**: Hosted on **Render** as a Linux Docker Container (`uvicorn app.main:app`).
+* **Database**: Managed **PostgreSQL** provisioned on Render.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Backend**: Python 3.11, FastAPI, NumPy, SQLAlchemy 2.0, PostgreSQL, Pytest, PyJWT, Passlib (Bcrypt), Docker.
+* **Frontend**: React 18, Vite, TypeScript, TailwindCSS, Zustand, Lucide Icons, Axios.
+
+---
+
+## 🚀 Local Development Setup
+
 ```bash
-# Backend Setup
+# 1. Clone repository
+git clone https://github.com/Pavitran2006/AnuvaQ.git
+cd AnuvaQ
+
+# 2. Setup Backend
 cd backend
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-
-# Frontend Setup
-cd ../frontend
-npm install
-```
-
-### 2. Run Application
-```bash
-# Start FastAPI Backend Server
-cd backend
 python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 
-# Start Frontend Preview Server
+# 3. Setup Frontend (in a new terminal)
 cd frontend
-npm run preview
+npm install
+npm run dev
 ```
-- Frontend Web App: `http://localhost:4173`
-- Backend REST API: `http://localhost:8000`
-- Swagger API Documentation: `http://localhost:8000/docs`
 
----
-
-## ☁️ Deployment Blueprint
-
-The repository contains pre-configured automation files for permanent 1-click cloud deployments:
-- **`render.yaml`**: Render Infrastructure-as-Code blueprint for multi-service Docker FastAPI backend + Managed PostgreSQL database.
-- **`Dockerfile`**: Multi-stage production container with `libpq-dev` drivers and dynamic `$PORT` binding.
-- **`frontend/vercel.json`**: SPA routing configuration for Vercel static hosting.
+- **Frontend App**: `http://localhost:5173`
+- **Backend API Docs**: `http://localhost:8000/docs`
