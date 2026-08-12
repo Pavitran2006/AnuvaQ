@@ -68,6 +68,19 @@ def root():
     }
 
 
+import os
+from fastapi.responses import FileResponse
+
+favicon_path = os.path.join(os.path.dirname(__file__), "static", "favicon.ico")
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    if os.path.exists(favicon_path):
+        return FileResponse(favicon_path)
+    return {"status": "ok"}
+
+
 @app.get("/health")
 def health_check():
     return {
@@ -75,3 +88,4 @@ def health_check():
         "version": settings.VERSION,
         "quantum_engine": "NumPy Pure Quantum Engine"
     }
+
